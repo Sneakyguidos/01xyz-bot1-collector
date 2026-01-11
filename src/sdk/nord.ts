@@ -13,7 +13,7 @@ export async function getMarkets(_nord: any) {
 }
 
 export async function getOrderbook(_nord: any, symbol: string) {
-  const res = await fetch(`${BASE}/orderbook/${symbol}`);
+  const res = await fetch(`${BASE}/orderbook?symbol=${encodeURIComponent(symbol)}`);
   if (!res.ok) throw new Error(`orderbook ${res.status}`);
   return res.json();     // ← { bids: [], asks: [] }
 }

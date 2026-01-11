@@ -11,7 +11,7 @@ export async function getMarkets(_nord) {
     return json.markets; // ← array of market objects
 }
 export async function getOrderbook(_nord, symbol) {
-    const res = await fetch(`${BASE}/orderbook/${symbol}`);
+    const res = await fetch(`${BASE}/orderbook?symbol=${encodeURIComponent(symbol)}`);
     if (!res.ok)
         throw new Error(`orderbook ${res.status}`);
     return res.json(); // ← { bids: [], asks: [] }
