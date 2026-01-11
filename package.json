@@ -1,19 +1,19 @@
 {
   "name": "01xyz-bot1-collector",
   "version": "1.0.0",
-  "description": "TypeScript collector for 01.xyz perpetual markets – computes farmability scores for airdrop farming.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Sneakyguidos/01xyz-bot1-collector.git"
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
   },
-  "author": "Sneakyguidos <your@email.com>",
-  "license": "MIT",
-  "keywords": [
-    "01xyz",
-    "solana",
-    "perpetuals",
-    "airdrop-farming",
-    "typescript",
-    "market-data"
-  ]
+  "dependencies": {
+    "@n1xyz/nord-ts": "*",
+    "@solana/web3.js": "^1.95.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.11.0"
+  }
 }
