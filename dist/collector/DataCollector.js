@@ -13,14 +13,13 @@ export class DataCollector {
         setInterval(async () => {
             const markets = await getMarkets(this.nord);
             for (const m of markets) {
-                const symbolPerp = m.symbol.endsWith('-PERP') ? m.symbol : `${m.symbol}-PERP`;
                 try {
-                    const ob = await getOrderbook(this.nord, symbolPerp);
+                    const ob = await getOrderbook(this.nord, m.symbol);
                     const snap = computeMetrics(m.symbol, m, ob);
                     saveSnapshot(this.interval, m.symbol, snap);
                 }
                 catch (e) {
-                    console.error(symbolPerp, e);
+                    console.error(m.symbol, e);
                 }
             }
         }, delay);
